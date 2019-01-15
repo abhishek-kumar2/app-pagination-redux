@@ -1,0 +1,28 @@
+<div class="alert alert-light" role="alert">
+  <h2 class="alert-heading">Add new to list</h2>
+  <div class="form-row">
+    <div class="col-md-10">
+      <input type="text" class="form-control" #title />
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-success" (click)="addTodo(title)">Add</button>
+    </div>
+  </div>
+</div>
+<div class="alert alert-info" role="alert" [hidden]="!(todos | async).length">
+  <h2 class="alert-heading">Todo List</h2>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let t of (todos | async)">
+      <span
+        class="task"
+        (click)="toggleTodo(t)"
+        [class.completed]="t.isCompleted"
+      >
+        {{ t.title }}
+      </span>
+      <button class="btn btn-danger btn-sm float-right" (click)="removeTodo(t)">
+        Remove
+      </button>
+    </li>
+  </ul>
+</div>

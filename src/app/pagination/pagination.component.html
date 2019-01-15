@@ -1,0 +1,28 @@
+<h3>Dummy Posts: <small class="text-muted">Title</small></h3>
+<div class="row">
+  <ul class="list-group">
+    <li *ngFor="let post of posts" class="list-group-item">
+      {{ post.id }}. {{ post.title }}
+    </li>
+  </ul>
+  <div class="alert alert-danger" [hidden]="!pageError">{{ pageError }}</div>
+</div>
+<div class="row mt-2">
+  <div
+    class="btn-toolbar"
+    role="toolbar"
+    aria-label="Page number button groups"
+  >
+    <div class="btn-group mr-2" role="group" aria-label="Numbered group">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        [class.active]="number == selectedPage"
+        *ngFor="let number of pages"
+        (click)="getPostOfPage(number)"
+      >
+        {{ number + 1 }}
+      </button>
+    </div>
+  </div>
+</div>
